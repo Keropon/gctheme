@@ -1,0 +1,2 @@
+# gctheme
+Gamercafe Website Theme
