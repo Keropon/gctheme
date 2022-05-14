@@ -1,17 +1,16 @@
+:root{
+    --reviews-color:    #F29400;
+    --blog-color:       #00B9FF;
+    --podcasts-color:   #FF004E;
+    --bg-color:         linear-gradient(to bottom, #000000 0%, #160035 100%);
+    --border-color:     linear-gradient(to bottom, #FF4E00 0%, #FF004E 100%)
+    --bg-text-color:    #EEEEEE;
+}
+
 html,
 body {
     font-family: sans-serif;
-    background-color: #eee;
-}
-
-.page-nav {
-    display: flex;
-    flex-direction: column;
-    position: sticky;
-    max-height: calc(100vh - 1.5rem);
-    top: 0;
-    background-color: #160035;
-    padding: 0.75rem;
+    background-color: var(--bg-text-color);
 }
 
 .page-header {
@@ -19,51 +18,38 @@ body {
     position: sticky;
     display: flex;
     align-items: center;
-    height: 120px;
-    top: -50px;
-    transition: .4s;
+    height: 44px;
+    z-index: 999;
+    background: var(--bg-color);
+    border-width: 2px;
+    border-style: solid;
+    border-image-source: linear-gradient(180deg, #FF4E00 0%, #FF004E 100%);
+    position: sticky;
+    top: 0;
+}
+
+.page-content {
+    background-color: var(--bg-text-color);
+    padding: 0 2rem;   
 }
 
 .page-footer {
-    background-color: #eee;
+    background-color: var(--bg-text-color);
 }
 
 .page-end {
-    background-color: #160035;
+    background-color: var(--bg-color);
     padding: 6rem 1rem;
     text-align: right;
 }
-/*
-.page-container {
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    grid-template-rows: auto;
-    gap: 2px 2px;
-    grid-template-areas:
-        "navigation header"
-        "navigation main"
-        "navigation footer";
-}
-*/
+
 .smol-container {
     width: min(100% - 3rem, var(--container-max, 60ch));
     margin-inline: auto;
-  }
-.page-content {
-    background-color: #eee;
-    padding: 0 2rem;
-    
 }
 
 .article-featured {
     margin: 0 -2rem;
-}
-
-.page-nav {
-    grid-area: navigation;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .page-content {
@@ -74,30 +60,23 @@ body {
     grid-area: footer;
 }
 
-.header-banner {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-
-.header-banner img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
 .header-container {
-    position: sticky;
-    top: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 100%;
     width: 100%;
-    max-height: 70px;
     padding: 0 1.5rem;
+}
+
+.flex-center{
+    display: flex;
+    align-items: center;
+}
+
+.nav-container{
+    display: flex;
+    align-items: center;
 }
 
 .logo-primary {
@@ -142,7 +121,13 @@ body {
 .button.rounded {
     border-radius: 2rem;
 }
-
+.button.icon-only{
+    border-radius: 2rem;
+    padding: 0;
+}
+.button.icon-only .icon{
+    margin-right: 0;
+}
 .button.has-icon {
     padding: 0;
     padding-right: 1.5rem;
@@ -179,12 +164,7 @@ body {
 
 .nav-list {
     display: flex;
-    flex-direction: column;
     align-items: center;
-}
-
-.mt-auto{
-    margin-top: auto;
 }
 
 .nav-logo{
@@ -194,11 +174,6 @@ body {
 
 .nav-list a{
     margin: .25rem 0;
-}
-
-.page-nav a{
-    color: #fff;
-    font-size: 18px;
 }
 
 .wave {
@@ -246,27 +221,20 @@ body {
     font-size: 3rem;
 }
 
-.link-reviews {
-    border-color: #F29400;
-}
-
-.link-blog {
-    border-color: #00B9FF;
-}
-
-.link-podcasts {
-    border-color: #FF004E;
-}
-
-.link-menu, .link-reviews, .link-blog, .link-podcasts{
+.link-menu, .link-icon, .link-reviews, .link-blog, .link-podcasts{
     border-style: solid;
     border-width: 1px;
     border-radius: 0;
-    height: 50px;
-    width: 50px;
+    border-color: transparent;
+    height: 44px;
+    width: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.link-menu.small{
+    width: 30px;
+    height: 30px;
 }
 
 .meta-postedat, .meta-posttags{
@@ -279,10 +247,10 @@ body {
     font-size: 1.25rem;
 }
 .slider.podcast{
-    background-color: #FF004E;
+    background-color: var(--podcasts-color);
 }
 .slider.reviews{
-    background-color: #F29400;
+    background-color: var(--reviews-color);
 }
 
 .slider{
@@ -343,23 +311,3 @@ body {
     top: 60px;
     height: fit-content;
 }
-
-.page-header{
-    z-index: 999;
-}
-/*
-.page-container{
-   grid-template-areas:
-        "header"
-        "navigation"
-        "main"
-        "footer";
-    grid-template-columns: 1fr;
-}
-.page-nav {
-    flex-direction: row;
-}
-.page-header a.button {
-    display: none;
-}
-*/
